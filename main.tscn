@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuskkaiy8c30l"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_sqsp0"]
+[ext_resource type="PackedScene" uid="uid://dk08cay58csyq" path="res://moving_obstacle.tscn" id="2_gwpfk"]
+[ext_resource type="PackedScene" uid="uid://ox5panfg6u1f" path="res://player.tscn" id="3_gvcaw"]
+[ext_resource type="Texture2D" uid="uid://bgoacv2ukbsvu" path="res://background.png" id="4_brb88"]
+
+[sub_resource type="Animation" id="Animation_if7qo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingObstacle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, -55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingObstacle2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, -24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MovingObstacle3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-34, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingObstacle4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-117, -102)]
+}
+
+[sub_resource type="Animation" id="Animation_myr0o"]
+resource_name = "moving_bird"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingObstacle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(38, -55), Vector2(-62, -53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingObstacle2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, -24), Vector2(-92, -24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MovingObstacle3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-34, 15), Vector2(67, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MovingObstacle4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-117, -102), Vector2(114, -102)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_id13q"]
+_data = {
+"RESET": SubResource("Animation_if7qo"),
+"moving_bird": SubResource("Animation_myr0o")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_sqsp0")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("4_brb88")
+
+[node name="player" parent="." instance=ExtResource("3_gvcaw")]
+position = Vector2(-66, 319)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_id13q")
+}
+
+[node name="MovingObstacle" parent="." instance=ExtResource("2_gwpfk")]
+position = Vector2(38, -55)
+
+[node name="MovingObstacle2" parent="." instance=ExtResource("2_gwpfk")]
+position = Vector2(48, -24)
+
+[node name="MovingObstacle3" parent="." instance=ExtResource("2_gwpfk")]
+position = Vector2(-34, 15)
+
+[node name="MovingObstacle4" parent="." instance=ExtResource("2_gwpfk")]
+position = Vector2(-117, -102)

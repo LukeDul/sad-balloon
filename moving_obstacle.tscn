@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk08cay58csyq"]
+
+[ext_resource type="Texture2D" uid="uid://bq1fia41jnkqh" path="res://bird.png" id="1_qoso3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxpxo"]
+size = Vector2(8, 8)
+
+[node name="MovingObstacle" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_jxpxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_qoso3")
