@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ox5panfg6u1f"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_gr7ow"]
+[ext_resource type="Texture2D" uid="uid://ca5dbilfkku4u" path="res://sad_balloon.png" id="2_wy86u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8uswf"]
+radius = 8.0
+height = 20.125
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_gr7ow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(8, 8)
+texture = ExtResource("2_wy86u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28.25)
+scale = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_8uswf")
